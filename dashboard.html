@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My tags | REC Lost &amp; Found</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="dashboard">
+
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>REC Lost &amp; Found</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html" data-user hidden>My tags</a>
+      <a href="create-tag.html" data-user hidden>New tag</a>
+      <button type="button" id="logoutBtn" class="linklike" data-user hidden>Logout</button>
+      <a href="login.html" data-guest>Login</a>
+      <a href="register.html" class="btn btn-small" data-guest>Register</a>
+    </nav>
+  </header>
+
+  <main class="wide">
+    <div class="page-head">
+      <div>
+        <h1 id="hello">My tags</h1>
+        <p class="muted">Every item you protect with a QR sticker is listed here.</p>
+      </div>
+      <a class="btn" href="create-tag.html">Create a new tag</a>
+    </div>
+
+    <p id="msg" class="alert" role="alert" hidden></p>
+
+    <!-- Shown when the owner has no tags yet -->
+    <div id="emptyMsg" class="panel" hidden>
+      <h2>No tags yet</h2>
+      <p>Make a tag for your bag, phone or keys. It takes under a minute.</p>
+      <a class="btn" href="create-tag.html">Create your first tag</a>
+    </div>
+
+    <!-- The tag list is filled in by JavaScript -->
+    <div id="tableWrap" class="table-wrap" hidden>
+      <table id="tagTable">
+        <thead>
+          <tr>
+            <th scope="col">Item</th>
+            <th scope="col">Status</th>
+            <th scope="col">Created</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tagRows"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>REC mini project built with HTML, CSS and JavaScript</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

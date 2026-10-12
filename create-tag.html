@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New tag | REC Lost &amp; Found</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="create-tag">
+
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>REC Lost &amp; Found</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html" data-user hidden>My tags</a>
+      <a href="create-tag.html" data-user hidden>New tag</a>
+      <button type="button" id="logoutBtn" class="linklike" data-user hidden>Logout</button>
+      <a href="login.html" data-guest>Login</a>
+      <a href="register.html" class="btn btn-small" data-guest>Register</a>
+    </nav>
+  </header>
+
+  <main class="narrow">
+    <h1>Create a tag</h1>
+    <p class="muted">Tell us what you want to protect. You get a QR sticker to print next.</p>
+
+    <form id="tagForm" class="panel">
+      <label for="itemType">Item type</label>
+      <select id="itemType" name="itemType" required>
+        <option value="Bag">Bag</option>
+        <option value="Phone">Phone</option>
+        <option value="Wallet">Wallet</option>
+        <option value="Keys">Keys</option>
+        <option value="Laptop">Laptop</option>
+        <option value="ID card">ID card</option>
+        <option value="Water bottle">Water bottle</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="itemName">Item name</label>
+      <input type="text" id="itemName" name="itemName" placeholder="Black backpack with red zip" maxlength="60" required>
+
+      <label for="itemNote">Message for the finder (optional)</label>
+      <textarea id="itemNote" name="itemNote" maxlength="200"
+                placeholder="Please chat with me. I study in 2nd year CSE."></textarea>
+      <p class="hint">Anyone who scans the QR can read this message. Do not write your phone number here.</p>
+
+      <p id="msg" class="alert" role="alert" hidden></p>
+
+      <button type="submit" id="submitBtn" class="btn btn-block">Create tag and QR</button>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <p>REC mini project built with HTML, CSS and JavaScript</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

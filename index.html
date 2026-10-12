@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REC Lost &amp; Found</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="home">
+
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>REC Lost &amp; Found</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html" data-user hidden>My tags</a>
+      <a href="create-tag.html" data-user hidden>New tag</a>
+      <button type="button" id="logoutBtn" class="linklike" data-user hidden>Logout</button>
+      <a href="login.html" data-guest>Login</a>
+      <a href="register.html" class="btn btn-small" data-guest>Register</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <h1>Stick it. Scan it. Get it back.</h1>
+        <p class="lead">
+          Put a QR sticker on your bag, phone or keys. Whoever finds it scans the code and
+          chats with you right here. Your phone number stays private.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="register.html" data-guest>Create a free tag</a>
+          <a class="btn" href="create-tag.html" data-user hidden>Create a new tag</a>
+          <a class="btn btn-light" href="#found">I found an item</a>
+        </div>
+      </div>
+
+      <!-- A sample tag, drawn with HTML and CSS -->
+      <div class="hero-tag">
+        <div class="tag">
+          <div class="tag-top">
+            <strong>Found me?</strong>
+            <span>Scan to message my owner</span>
+          </div>
+          <div class="tag-body">
+            <div class="qr-box" id="demoQr"></div>
+            <p class="tag-code">SAMPLE TAG</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works (a real sequence, so an ordered list) -->
+    <section class="section">
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li><strong>Make a tag</strong>Register, then name your item: bag, phone, wallet or keys.</li>
+        <li><strong>Print the QR</strong>Download the sticker and paste it on the item.</li>
+        <li><strong>Finder scans</strong>Any phone camera opens the page. No app and no login needed.</li>
+        <li><strong>Chat and hand over</strong>Talk, share live location, then mark the item as returned.</li>
+      </ol>
+    </section>
+
+    <!-- Finder section: a plain HTML form that sends the code to found.html -->
+    <section class="section" id="found">
+      <div class="panel found-box">
+        <h2>Found something?</h2>
+        <p>Scan the QR sticker with your phone camera. If it will not scan, type the code printed under the QR.</p>
+        <form action="found.html" method="get" class="code-form">
+          <label for="code" class="sr-only">Tag code</label>
+          <input type="text" id="code" name="id" placeholder="Example: T4F9K2QZ1" required
+                 pattern="[Tt][A-Za-z0-9]{8}" title="Code starts with T and has 9 letters or numbers in total">
+          <button type="submit" class="btn">Open tag</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>REC mini project built with HTML, CSS and JavaScript</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

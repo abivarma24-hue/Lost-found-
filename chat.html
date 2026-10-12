@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat | REC Lost &amp; Found</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="chat">
+
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>REC Lost &amp; Found</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html" data-user hidden>My tags</a>
+      <a href="create-tag.html" data-user hidden>New tag</a>
+      <button type="button" id="logoutBtn" class="linklike" data-user hidden>Logout</button>
+      <a href="login.html" data-guest>Login</a>
+      <a href="register.html" class="btn btn-small" data-guest>Register</a>
+    </nav>
+  </header>
+
+  <main class="wide">
+    <p id="chatAlert" class="alert" role="alert" hidden></p>
+
+    <div id="chatRoot" hidden>
+      <div class="chat-head">
+        <div>
+          <h1 id="chatTitle">Chat</h1>
+          <p id="roleText" class="muted"></p>
+          <p id="ownerLogin" hidden>Are you the owner? <a id="ownerLoginLink" href="login.html">Log in</a> to chat as the owner.</p>
+        </div>
+        <button type="button" id="returnBtn" class="btn" hidden>Mark as returned</button>
+      </div>
+
+      <p id="returnedBanner" class="alert ok" hidden>This item has been returned to its owner. The chat is now closed.</p>
+      <p id="netNote" class="alert warn" hidden>Connection problem. Trying again...</p>
+
+      <div class="chat-grid">
+
+        <!-- Chat box -->
+        <section class="panel" aria-label="Chat">
+          <div id="chatLog" class="chat-log" aria-live="polite"></div>
+          <form id="chatForm" class="chat-form">
+            <label for="chatInput" class="sr-only">Your message</label>
+            <input type="text" id="chatInput" placeholder="Type a message" maxlength="500" autocomplete="off" required>
+            <button type="submit" id="sendBtn" class="btn">Send</button>
+          </form>
+        </section>
+
+        <!-- Live location -->
+        <section class="panel" aria-label="Live location">
+          <h2>Live location</h2>
+          <p>Share where you are so the other person can find you. You can stop at any time.</p>
+          <button type="button" id="shareBtn" class="btn btn-light">Share my live location</button>
+          <p id="locStatus" role="status">You are not sharing your location.</p>
+
+          <div class="loc" id="loc-finder" hidden>
+            <h3 id="locTitle-finder">Finder's location</h3>
+            <iframe id="map-finder" title="Map showing the finder's location" loading="lazy"></iframe>
+            <a id="maplink-finder" href="#" target="_blank" rel="noopener">Open in Google Maps</a>
+          </div>
+
+          <div class="loc" id="loc-owner" hidden>
+            <h3 id="locTitle-owner">Owner's location</h3>
+            <iframe id="map-owner" title="Map showing the owner's location" loading="lazy"></iframe>
+            <a id="maplink-owner" href="#" target="_blank" rel="noopener">Open in Google Maps</a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>REC mini project built with HTML, CSS and JavaScript</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

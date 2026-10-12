@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You found an item | REC Lost &amp; Found</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="found">
+
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>REC Lost &amp; Found</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html" data-user hidden>My tags</a>
+      <a href="create-tag.html" data-user hidden>New tag</a>
+      <button type="button" id="logoutBtn" class="linklike" data-user hidden>Logout</button>
+      <a href="login.html" data-guest>Login</a>
+      <a href="register.html" class="btn btn-small" data-guest>Register</a>
+    </nav>
+  </header>
+
+  <main class="narrow">
+    <p id="foundMsg" class="alert" role="alert" hidden></p>
+
+    <section id="foundCard" class="panel" hidden>
+      <h1>You found <span id="itemName">an item</span></h1>
+      <p>Thank you for helping. This <span id="itemType">item</span> belongs to <strong id="ownerName">its owner</strong>.</p>
+
+      <blockquote id="ownerNote" hidden></blockquote>
+
+      <p>
+        You cannot see the owner's phone number, and they cannot see yours.
+        Use the chat to agree on a place to hand it over. You can also share your live location.
+      </p>
+
+      <a id="chatLink" class="btn btn-block" href="chat.html">Chat with the owner</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>REC mini project built with HTML, CSS and JavaScript</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

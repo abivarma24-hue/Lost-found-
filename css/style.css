@@ -1,0 +1,262 @@
+/* =====================================================================
+   REC QR Lost & Found  -  css/style.css
+   Idea: the whole site looks like a luggage tag. Navy ink, tag yellow,
+   and one hard-edged "tag card" that holds the QR code.
+   ===================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap");
+
+/* ---------- 1. Colours and basic settings ---------- */
+:root {
+  --ink: #14213d;        /* navy: text, header, QR */
+  --paper: #f3f5f9;      /* page background */
+  --card: #ffffff;
+  --tag: #ffc93c;        /* tag yellow: main buttons */
+  --tag-soft: #fff3cc;
+  --line: #d5dbe6;
+  --muted: #566074;
+  --ok: #15803d;
+  --ok-soft: #dff5e6;
+  --bad: #b42318;
+  --bad-soft: #fde7e4;
+  --radius: 14px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* The HTML "hidden" attribute must always win */
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+main { flex: 1; }
+h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 0.6rem; }
+h1 { font-size: clamp(1.7rem, 4.5vw, 2.4rem); font-weight: 800; }
+h2 { font-size: 1.5rem; font-weight: 800; }
+h3 { font-size: 1.1rem; font-weight: 600; }
+p { margin: 0 0 0.8rem; }
+a { color: var(--ink); }
+small, .muted { color: var(--muted); }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+
+/* ---------- 2. Header and footer ---------- */
+.site-header {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+  padding: 0.9rem clamp(1rem, 4vw, 2.5rem);
+  background: var(--ink); color: #fff;
+}
+.site-header :focus-visible { outline-color: var(--tag); }
+
+.brand {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-weight: 800; font-size: 1.15rem; letter-spacing: -0.01em;
+  color: #fff; text-decoration: none;
+}
+/* small yellow tag icon drawn with CSS only */
+.brand-mark {
+  position: relative; display: inline-block;
+  width: 24px; height: 29px; border-radius: 7px; background: var(--tag);
+}
+.brand-mark::after {
+  content: ""; position: absolute; top: 5px; left: 50%;
+  width: 7px; height: 7px; margin-left: -3.5px; border-radius: 50%; background: var(--ink);
+}
+
+.site-header nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 1.1rem; }
+.site-header nav a:not(.btn), .linklike {
+  color: #fff; font-weight: 600; text-decoration: none;
+  background: none; border: 0; padding: 0; font-family: inherit; font-size: 1rem; cursor: pointer;
+}
+.site-header nav a:not(.btn):hover, .linklike:hover { text-decoration: underline; }
+
+.site-footer {
+  padding: 1.5rem 1rem; text-align: center;
+  color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--line);
+}
+
+/* ---------- 3. Buttons ---------- */
+.btn {
+  display: inline-block; padding: 0.7rem 1.25rem;
+  font-family: inherit; font-size: 1rem; font-weight: 700; line-height: 1.2;
+  color: var(--ink); background: var(--tag);
+  border: 2px solid var(--ink); border-radius: 999px;
+  text-decoration: none; cursor: pointer;
+}
+.btn:hover { background: #ffd75e; }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.btn-light { background: #fff; }
+.btn-light:hover { background: var(--tag-soft); }
+.btn-small { padding: 0.4rem 0.95rem; font-size: 0.95rem; }
+.btn-block { display: block; width: 100%; text-align: center; margin-top: 1.25rem; }
+
+/* ---------- 4. Page layouts ---------- */
+.narrow { max-width: 520px; margin: 0 auto; padding: 2rem 1rem 3rem; }
+.wide { max-width: 1040px; margin: 0 auto; padding: 2rem clamp(1rem, 4vw, 2.5rem) 3rem; }
+.section { max-width: 1040px; margin: 0 auto; padding: 1.5rem clamp(1rem, 4vw, 2.5rem); }
+
+.panel {
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+.panel + .panel { margin-top: 1.25rem; }
+
+/* ---------- 5. Home page ---------- */
+.hero {
+  display: grid; gap: 2.5rem; align-items: center;
+  max-width: 1040px; margin: 0 auto;
+  padding: clamp(2rem, 6vw, 4.5rem) clamp(1rem, 4vw, 2.5rem);
+}
+@media (min-width: 820px) { .hero { grid-template-columns: 1.15fr 0.85fr; } }
+.hero h1 { font-size: clamp(2.5rem, 8vw, 4.4rem); line-height: 1; letter-spacing: -0.035em; margin-bottom: 1rem; }
+.hero p.lead { font-size: 1.2rem; max-width: 34em; color: var(--muted); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+.hero-tag { display: flex; justify-content: center; }
+
+.steps {
+  list-style: none; counter-reset: step; padding: 0; margin: 1rem 0 0;
+  display: grid; gap: 1.25rem;
+}
+@media (min-width: 760px) { .steps { grid-template-columns: repeat(4, 1fr); } }
+.steps li { counter-increment: step; border-top: 3px solid var(--ink); padding-top: 0.7rem; }
+.steps li::before { content: counter(step); display: block; font-size: 2rem; font-weight: 800; line-height: 1; }
+.steps strong { display: block; margin: 0.3rem 0 0.15rem; }
+
+.found-box { background: var(--tag-soft); border-color: #e0b32a; }
+.code-form { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.8rem; }
+.code-form input { flex: 1 1 180px; width: auto; text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* ---------- 6. The tag card (the memorable part) ---------- */
+.tag {
+  width: min(100%, 300px);
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 22px;
+  box-shadow: 6px 6px 0 var(--ink);
+  overflow: hidden;
+  text-align: center;
+}
+.tag-top {
+  position: relative;
+  padding: 2.2rem 1.1rem 0.9rem;
+  background: var(--tag);
+  border-bottom: 2px solid var(--ink);
+}
+/* the punched hole at the top of the tag */
+.tag-top::before {
+  content: ""; position: absolute; top: 12px; left: 50%;
+  width: 16px; height: 16px; margin-left: -8px;
+  border-radius: 50%; background: var(--paper); border: 2px solid var(--ink);
+}
+.tag-top strong { display: block; font-size: 1.2rem; line-height: 1.2; }
+.tag-top span { display: block; font-size: 0.95rem; margin-top: 0.15rem; }
+.tag-body { padding: 1.1rem 1.1rem 1.3rem; }
+.tag-code { margin: 0.8rem 0 0; font-weight: 800; letter-spacing: 0.14em; }
+.qr-box {
+  display: inline-block; padding: 12px; line-height: 0;
+  background: #fff; border: 1.5px solid var(--line); border-radius: 12px;
+}
+.qr-box img, .qr-box canvas { max-width: 100%; height: auto; }
+
+.qr-layout { display: grid; gap: 2rem; justify-items: center; }
+@media (min-width: 820px) { .qr-layout { grid-template-columns: auto 1fr; justify-items: start; align-items: start; } }
+.link-text { word-break: break-all; font-size: 0.9rem; color: var(--muted); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1rem 0; }
+
+/* ---------- 7. Forms ---------- */
+label { display: block; margin: 1rem 0 0.35rem; font-weight: 600; }
+input, select, textarea {
+  width: 100%; padding: 0.7rem 0.85rem;
+  font-family: inherit; font-size: 1rem; color: var(--ink);
+  background: #fff; border: 1.5px solid var(--line); border-radius: 10px;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--ink); }
+textarea { min-height: 100px; resize: vertical; }
+.hint { margin: 0.3rem 0 0; font-size: 0.9rem; color: var(--muted); }
+
+.alert { padding: 0.8rem 1rem; margin: 1rem 0; border: 1.5px solid; border-radius: 10px; }
+.alert.error { background: var(--bad-soft); border-color: var(--bad); color: #7a1a12; }
+.alert.ok { background: var(--ok-soft); border-color: var(--ok); color: #0d4f27; }
+.alert.warn { background: var(--tag-soft); border-color: #c99400; color: #5a4300; }
+
+blockquote {
+  margin: 1rem 0; padding: 0.6rem 1rem;
+  border-left: 4px solid var(--tag); background: #fafbfd; color: var(--ink);
+}
+
+/* ---------- 8. Dashboard table ---------- */
+.page-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.table-wrap { overflow-x: auto; background: #fff; border: 1.5px solid var(--line); border-radius: var(--radius); }
+table { width: 100%; min-width: 660px; border-collapse: collapse; }
+th, td { padding: 0.8rem 1rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+th { font-size: 0.9rem; font-weight: 600; color: var(--muted); background: #f8f9fc; }
+tr:last-child td { border-bottom: 0; }
+
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.9rem; }
+.actions a, .actions button {
+  padding: 0; font-family: inherit; font-size: 1rem; font-weight: 600;
+  color: var(--ink); background: none; border: 0; text-decoration: underline; cursor: pointer;
+}
+.actions .danger { color: var(--bad); }
+
+.chip { display: inline-block; padding: 0.1rem 0.65rem; font-size: 0.85rem; font-weight: 700; border: 1.5px solid; border-radius: 999px; }
+.chip.active { background: var(--tag-soft); border-color: #c99400; color: #5a4300; }
+.chip.returned { background: var(--ok-soft); border-color: var(--ok); color: #0d4f27; }
+.badge-new {
+  display: inline-block; margin-left: 0.2rem; padding: 0 0.5rem;
+  font-size: 0.8rem; color: #fff; background: var(--ink); border-radius: 999px; text-decoration: none;
+}
+
+/* ---------- 9. Chat and location ---------- */
+.chat-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+.chat-grid { display: grid; gap: 1.25rem; margin-top: 0.5rem; }
+@media (min-width: 900px) { .chat-grid { grid-template-columns: 1.1fr 0.9fr; align-items: start; } }
+.chat-grid .panel + .panel { margin-top: 0; }
+
+.chat-log {
+  display: flex; flex-direction: column; gap: 0.55rem;
+  height: min(52vh, 480px); min-height: 260px; overflow-y: auto;
+  padding: 0.25rem 0.15rem 1rem;
+}
+.chat-log .empty { margin: auto; color: var(--muted); text-align: center; }
+.msg { max-width: 82%; padding: 0.55rem 0.85rem; border-radius: 16px; overflow-wrap: anywhere; }
+.msg p { margin: 0; }
+.msg time { display: block; margin-top: 0.15rem; font-size: 0.75rem; opacity: 0.7; }
+.msg.mine { align-self: flex-end; color: #fff; background: var(--ink); border-bottom-right-radius: 4px; }
+.msg.theirs { align-self: flex-start; background: #eceff6; border-bottom-left-radius: 4px; }
+.msg.system { align-self: center; max-width: 95%; font-size: 0.9rem; text-align: center; background: var(--tag-soft); }
+
+.chat-form { display: flex; gap: 0.6rem; padding-top: 0.9rem; border-top: 1.5px solid var(--line); }
+.chat-form input { flex: 1; width: auto; }
+
+.loc { margin-top: 1rem; }
+.loc iframe { width: 100%; height: 260px; border: 0; border-radius: 10px; background: #e8ecf3; }
+#locStatus { margin-top: 0.6rem; font-size: 0.95rem; color: var(--muted); }
+
+/* ---------- 10. Print: only the tag card is printed ---------- */
+@media print {
+  body * { visibility: hidden; }
+  .printable, .printable * { visibility: visible; }
+  .printable { position: absolute; left: 0; top: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | REC Lost &amp; Found</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="login">
+
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>REC Lost &amp; Found</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html" data-user hidden>My tags</a>
+      <a href="create-tag.html" data-user hidden>New tag</a>
+      <button type="button" id="logoutBtn" class="linklike" data-user hidden>Logout</button>
+      <a href="login.html" data-guest>Login</a>
+      <a href="register.html" class="btn btn-small" data-guest>Register</a>
+    </nav>
+  </header>
+
+  <main class="narrow">
+    <h1>Log in</h1>
+    <p class="muted">Welcome back. Log in to see your tags and chats.</p>
+
+    <form id="loginForm" class="panel">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" autocomplete="current-password" required>
+
+      <p id="msg" class="alert" role="alert" hidden></p>
+
+      <button type="submit" id="submitBtn" class="btn btn-block">Log in</button>
+    </form>
+
+    <p style="margin-top:1rem">New here? <a href="register.html">Create an account</a></p>
+  </main>
+
+  <footer class="site-footer">
+    <p>REC mini project built with HTML, CSS and JavaScript</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
